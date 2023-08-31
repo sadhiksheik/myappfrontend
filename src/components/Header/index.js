@@ -1,13 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link,withRouter,useHistory } from "react-router-dom"
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
 import {FaShare} from "react-icons/fa"
 import Cookies from "js-cookie";
 import "./index.css"
 
 const Header =()=>{
   const [postType,setpostType] = useState("All");
-
+  const history = useHistory();
   const onAllPostsClicked = () =>{
     setpostType("All")
   }
@@ -17,8 +16,9 @@ const Header =()=>{
   }
 
   const onLoggingOut = () =>{
+   
     Cookies.remove('jwt_token')
-    return <Navigate to="/" replace />;
+    history.replace('/login')
   }
   
   const activeAllButton = postType === "All"? "all-posts-button":""
@@ -35,7 +35,7 @@ return (
       <Link className="link-el" to="/">
         <button onClick={onAllPostsClicked} className={`${activeAllButton} posts-btn `}>All posts</button> 
       </Link>
-    <Link className="link-el" to="/posts/1">
+    <Link className="link-el" to="/myposts">
         <button onClick={onMyPostsClicked}  className={`${activeMyButton} posts-btn`}>My posts</button>
     </Link>
     <button onClick={onLoggingOut} className="logout-btn">Logout</button>
@@ -43,4 +43,4 @@ return (
   </div>
 )
 }
-export default Header
+export default withRouter(Header)

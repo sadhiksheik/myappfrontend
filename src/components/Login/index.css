@@ -1,8 +1,15 @@
+.bg-login-cont{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
 .login-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  
   font-family: "Roboto";
 }
 .main-button{
@@ -66,10 +73,12 @@
 .register-form-container{
   display: flex;
   flex-direction: column;
-  
+  padding: 10px;
+  align-items: center;
 }
 .register-label{
   font-size: 17px;
+  align-self: flex-start;
 }
 .name-input{
   margin-top: 10px;
@@ -77,14 +86,29 @@
   padding: 10px;
   border-radius: 7px;
   border: none;
-  width: 200px;
+  width: 100%;
+  margin-bottom: 25px;
+}
+@media screen and (max-width: 768px) {
+  .name-input{
+    margin-bottom: 10px;
+  }
+  
 }
 .submit-btn{
   color: black;
-  padding: 10px;
-  width: 150px;
+  padding: 10px;width: 150px;
   margin-top: 30px;
   border-radius: 10px;
   font-size: 20px;
   border: none;
+  
+}
+.error-msg{
+  color: red;
+  font-size: 15px;
+}
+.reg-msg{
+  color: black;
+  align-self: center;
 }

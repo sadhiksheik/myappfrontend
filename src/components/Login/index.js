@@ -1,68 +1,78 @@
 import React from 'react';
 import { RxCross2 } from 'react-icons/rx';
-import { Navigate } from 'react-router-dom';
+import {Redirect,useHistory} from 'react-router-dom'
 import Popup from 'reactjs-popup';
 import Cookies from 'js-cookie';
 import './index.css';
-import { useNavigate } from 'react-router-dom'; // Import the hook
+
 
 function Login() {
   const [registerName, setRegisterName] = React.useState('');
   const [registerPassword, setRegisterPassword] = React.useState('');
   const [loginName, setLoginName] = React.useState('');
   const [loginPassword, setLoginPassword] = React.useState('');
+  const [showSubmitError,setShowSubmitError] = React.useState(false)
+  const [errorMsg,setErrorMsg] = React.useState("")
+  const [registerMsg,setRegisterMsg] = React.useState("")
+  const history = useHistory();
 
-  const navigate = useNavigate(); 
-
-  const onClickingRegister =  (event) => {
+  const onClickingRegister = async (event) => {
     event.preventDefault();
     if (registerName && registerPassword) {
-    // const userDetails = {name: registername, password: registerPassword}
-    // const url = 'https://content-sharing-backed.onrender.com/register'
-    // const options = {
-    //   method: 'POST',
-    //   body: JSON.stringify(userDetails),
-    // }
-    // const response = await fetch(url, options)
-    // console.log(response)
-
+      const userDetails = { name: registerName, password: registerPassword }; 
+      const url = 'https://content-sharing-backed.onrender.com/register';
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userDetails),
+      };
+      const response = await fetch(url, options);
+      if (response.ok === true){
+        setRegisterMsg("Registration Successful you can login now");
+      }
+      console.log(response);
     } else {
       alert('Both the fields should be filled');
     }
   };
 
-  const onClickingLogin = (event) => {
+  const onClickingLogin = async (event) => {
     event.preventDefault();
     if (loginName && loginPassword) {
-      const userDetails = {name: loginName, password: loginPassword}
-      console.log(userDetails)
-    // const url = 'https://content-sharing-backed.onrender.com/login'
-    // const options = {
-    //   method: 'POST',
-    //   body: JSON.stringify(userDetails),
-    //  const response = await fetch(url, options)
-    // const data = await response.json()
-    // console.log(data)
-      const jwtToken =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2l2YSBLb3RpIiwidXNlcl9pZCI6NCwiaWF0IjoxNjkzNDY3MDM5fQ.HtGvkkUbtvd_ySmLK_DoSA6G4xsFxEPmyZdHU9reqa8';
-
-      Cookies.set('jwt_token', jwtToken, {
-        expires: 30,
-      });
-
-      navigate('/'); // Navigate using the hook
-
+      const userDetails = { name: loginName, password: loginPassword };
+      console.log(userDetails);
+      const url = 'https://content-sharing-backed.onrender.com/login';
+      const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userDetails),
+      };
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(response)
+      if (response.ok) {
+        console.log(data);
+        const jwtToken = data.jwtToken;
+        Cookies.set('jwt_token', jwtToken, {
+          expires: 30,
+        });
+        history.replace('/');
+      } else {
+        setShowSubmitError(true);
+        setErrorMsg(data.error_msg);
+      }
     } else {
       alert('Both the fields should be filled');
     }
   };
-
-  const jwtToken = Cookies.get('jwt_token');
-  if (jwtToken !== undefined) {
-    return <Navigate to="/" replace />;
-  }
+  
+  const jwtToken = Cookies.get('jwt_token')
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
 
   return (
+    <div className='bg-login-cont'>
     <div className="login-container">
       <Popup modal trigger={<button className="main-button">Register</button>}>
         {(close) => (
@@ -73,6 +83,7 @@ function Login() {
                 <RxCross2 size={20} />
               </button>
             </div>
+
             <form onSubmit={onClickingRegister} className="register-form-container">
               <label className="register-label" htmlFor="name">
                 Your Name
@@ -131,10 +142,13 @@ function Login() {
               <button type="submit" className="submit-btn">
                 Login
               </button>
+              {showSubmitError && <p className='error-msg'>*{errorMsg}</p>}
             </form>
           </div>
         )}
       </Popup>
+    </div>
+    {registerMsg!=="" && <p className='reg-msg'>{registerMsg}</p>}
     </div>
   );
 }
