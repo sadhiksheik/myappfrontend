@@ -32,8 +32,8 @@ function Home() {
   const [postsList, setPostsList] = useState([]);
   const [apiStatus, setApiStatus] = useState(apiStateConstants.success);
   
-  const [isLikedMap, setIsLikedMap] = useState({});
-  // let likedList = []
+  // const [isLikedMap, setIsLikedMap] = useState({});
+  const [likedList,setLikedList] = useState([])
   useEffect(() => {
     getPosts();
   }, []);
@@ -110,11 +110,14 @@ function Home() {
   //   }
   // };
 
-  const handleLike = (id)=>{
-    likedList =  likedList.includes(id) ? likedList.filter(each=>(
-      each.id!==id
-    )):likedList.push(id)
-  }
+  const handleLike = (id) => {
+    const updatedList = likedList.includes(id)
+      ? likedList.filter((each) => each.id !== id)
+      : [...likedList, id]; 
+  
+    setLikedList(updatedList);
+  };
+  
 
   const getHomeLoaderView = () => (
     <div className="Home-loader-container">
@@ -137,10 +140,10 @@ function Home() {
           </div>
           <div className="like-container">
             <button
-              onClick={() => handleLike(each)}
+              onClick={() => handleLike(each.post_id)}
               className="like-btn"
             >
-              {isLikedMap[each.post_id] ? (
+              {likedList.includes(each.post_id) ? (
                 <AiFillLike size={30} color="blue" />
               ) : (
                 <AiOutlineLike size={30} color="blue" />
