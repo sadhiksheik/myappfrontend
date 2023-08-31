@@ -35,8 +35,8 @@
 }
 @media screen and (max-width: 768px) {
   .popup-container{
-    height: 400px;
-    width: 300px;
+    height: 350px;
+    width: 250px;
   }
 }
 .close-para-container{
@@ -47,7 +47,7 @@
 }
 @media screen and (max-width: 768px) {
   .close-para-container{
-    width: 250px;
+    width: 200px;
   }
   
 }

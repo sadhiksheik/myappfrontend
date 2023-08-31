@@ -1,0 +1,85 @@
+.header-container{
+  padding: 0px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(249, 243, 243);
+  position: fixed; 
+   width: 100%;
+}
+@media screen and (max-width: 768px){
+  .header-container{
+    padding: 0px 10px;
+    padding-left: 10px;
+  }
+}
+.link-el{
+  text-decoration: none;
+}
+.logo{
+  color: red;
+  font-size: 25px;
+  margin-right: 7px;
+}
+@media screen and (max-width: 768px){
+  .logo{
+    font-size: 18px;
+  }
+  .share-logo{
+    font-size: 18px;
+  }
+}
+.share-logo{
+  color: blue;
+}
+.logo-cont{
+  display: flex;
+  align-items: center;
+}
+.routes-container{
+  display: flex;
+  align-items: center;
+  margin-right: 100px;
+}
+.posts-btn{
+  color: black;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 768px){
+  .posts-btn{
+    font-size: 15px;
+  }
+  .routes-container{
+    margin-right: 10px;
+  }
+}
+.all-posts-button{
+  color: blue;
+  border-bottom: 2px solid blue;
+  background-color: transparent;
+  font-size: 18px;
+}
+.my-posts-button{
+  color: blue;
+  border-bottom: 2px solid blue;
+  background-color: transparent;
+  font-size: 18px;
+}
+@media screen and (max-width: 768px){
+  .all-posts-button{
+    font-size: 15px;
+  }
+  .my-posts-button{
+    font-size: 15px;
+  }
+}
+.logout-btn{
+  background-color: transparent;
+  border: 1px solid black;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-style: 17px;
+}

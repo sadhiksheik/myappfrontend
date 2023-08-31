@@ -1,0 +1,121 @@
+.bg-home-container{
+  display: flex;
+  flex-direction: column;
+  
+}
+.Home-loader-container{
+  align-self: center;
+  margin-top: 100px;
+}
+.home-cont{
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  padding: 20px 50px;
+  padding-top: 80px;
+}
+@media screen and (max-width: 768px){
+  .home-cont{
+    padding: 10px 20px;
+    padding-left: 10px;
+    padding-top: 50px;
+  }
+}
+.each-post-li{
+  text-decoration: none;
+  list-style-type: none;
+}
+.profile-cotainer{
+  display: flex;
+  align-items: center;
+}
+.profile{
+  padding: 10px;
+  border-radius: 50%;
+  color: blue;
+  background-color: rgb(229, 196, 246);
+  margin-right: 10px;
+  font-weight: bold;
+  text-align: center; /* Center text horizontally and vertically */
+  width: 35px;
+  height: 30px;
+  font-size: 18px;
+padding-top: 15px;
+  }
+  @media screen and (max-width: 768px){
+    .profile{
+      width: 25px;
+      height:25px;
+      font-size: 15px;
+      padding-top: 13px;
+    }
+    
+  }
+  .profile-name{
+    font-size: 24px;
+    font-weight: bold;
+  }
+  @media screen and (max-width: 768px){
+    .profile-name{
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+  .post-container{
+    border: 2px solid rgb(229, 196, 246);
+    border-radius: 10px;
+    padding: 20px;
+    height: auto;
+    width: 70%;
+    margin-left: 80px;
+  }
+  @media screen and (max-width: 768px){
+    .post-container{
+      margin-left: 20px;
+      height: auto;
+      padding: 10px;
+    }
+  }
+  .post-text{
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  @media screen and (max-width: 768px){
+    .post-text{
+      font-size: 16px;
+    }
+  }
+  .like-container{
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(229, 196, 246);
+    border-radius: 10px;
+    padding: 5px;
+    width: 140px;
+    margin-left: 80px;
+    border-top: 0;
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 768px){
+    .like-container{
+      margin-left: 20px;
+      height: auto;
+      width: 100px;
+    }
+  }
+  .like-btn{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  .likes{
+    color: black;
+    font-size: 16px;
+  }
+  @media screen and (max-width: 768px){
+    .likes{
+      color: black;
+      font-size: 12px;
+    }
+  }
