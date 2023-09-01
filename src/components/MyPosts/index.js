@@ -15,20 +15,7 @@ const apiStateConstants = {
   failure: "FAILURE",
 };
 
-// const posts = [
-//   {post_id:2,post_text:"I love coding",likes:12,user_id:2,user_name:"Sadhik Sheik"},
-// //   {post_id:3,post_text:"Happy Birthday in advance to aour beloved leader",likes:12,user_id:3,user_name:"Sathish Pydi"},
-// // {post_is:4,post_text:"Happy Birthday in advance to aour beloved leader",likes:14,user_id:3,user_name:"Leo Motto"},
-// // {4|Haii All, hope everyone doing great|14|4},
-// // {5|Im not handsome, but i can give hands to someone|13|5},
-// // {6|I have joined in next wave CCBP to learn all the necessary sofware technologies|12|6},
-// // {7|I began exploring different courses where i cauld find learning different sofware technologies|12|7},
-// // {8|Travelling to chennai for site visit|13|8},
-// // {9|Stock market will be the future booming aspect|13|9},
-// // {10|taken 100 days coding challenge|13|10},
-// // {13|Hii im sathish im an electrical engineer|12|2},
-// // {14|Hii im leo im a mechanical engineer|12|3},
-// ]
+
 
 function MyPosts() {
   const [myPostsList, setMyPostsList] = useState([]);
@@ -56,11 +43,11 @@ function MyPosts() {
 
     try {
       const response = await fetch(url, options);
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
         const fetchedData = await response.json();
         setMyPostsList(fetchedData);
-        console.log(fetchedData);
+        // console.log(fetchedData);
         setApiStatus(apiStateConstants.success);
       } else {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -73,7 +60,7 @@ function MyPosts() {
 
   const getHomeLoaderView = () => (
     <div className="Home-loader-container">
-      <Puff color="#00BFFF" height={100} width={100} />
+      <Puff color="white" height={50} width={50} />
     </div>
   );
 
@@ -101,7 +88,7 @@ function MyPosts() {
       if (response.ok === true) {
         getMyPosts();
       }
-      console.log(response);
+      // console.log(response);
     } else {
       alert("Both the fields should be filled");
     }
@@ -125,7 +112,7 @@ function MyPosts() {
       if (response.ok === true) {
         getMyPosts();
       }
-      console.log(response);
+      // console.log(response);
     } else {
       alert("Both the fields should be filled");
     }
@@ -197,7 +184,6 @@ function MyPosts() {
           </div>
         )}
       </Popup>
-
       {myPostsList.length === 0 ? (
         <h1 className="no-posts">There Are No Posts Yet</h1>
       ) : (
@@ -299,6 +285,7 @@ function MyPosts() {
   return (
     <div className="bg-home-container">
       <Header />
+      
       {getSwitchedResults()}
     </div>
   );

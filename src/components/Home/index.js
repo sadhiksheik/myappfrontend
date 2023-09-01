@@ -13,27 +13,12 @@ const apiStateConstants = {
   failure: "FAILURE",
 };
 
-// const posts = [
-//   {post_id:2,post_text:"I love coding",likes:12,user_id:2,user_name:"Sadhik Sheik"},
-//   {post_id:3,post_text:"Happy Birthday in advance to aour beloved leader",likes:12,user_id:3,user_name:"Sathish Pydi"},
-// {post_is:4,post_text:"Happy Birthday in advance to aour beloved leader",likes:14,user_id:3,user_name:"Leo Motto"},
-// // {4|Haii All, hope everyone doing great|14|4},
-// // {5|Im not handsome, but i can give hands to someone|13|5},
-// // {6|I have joined in next wave CCBP to learn all the necessary sofware technologies|12|6},
-// // {7|I began exploring different courses where i cauld find learning different sofware technologies|12|7},
-// // {8|Travelling to chennai for site visit|13|8},
-// // {9|Stock market will be the future booming aspect|13|9},
-// // {10|taken 100 days coding challenge|13|10},
-// // {13|Hii im sathish im an electrical engineer|12|2},
-// // {14|Hii im leo im a mechanical engineer|12|3},
-// ]
-
 function Home() {
   const [postsList, setPostsList] = useState([]);
   const [apiStatus, setApiStatus] = useState(apiStateConstants.success);
-  
-  // const [isLikedMap, setIsLikedMap] = useState({});
-  const [likedList,setLikedList] = useState([])
+  // const [serachedList,setSearchedList] = useState(postsList);
+
+  const [likedList, setLikedList] = useState([]);
   useEffect(() => {
     getPosts();
   }, []);
@@ -41,7 +26,7 @@ function Home() {
   const getPosts = async () => {
     setApiStatus(apiStateConstants.loading);
     const token = Cookies.get("jwt_token");
-    console.log(token);
+    // console.log(token);
     const url = "https://content-sharing-backed.onrender.com/posts";
 
     const options = {
@@ -57,7 +42,7 @@ function Home() {
       if (response.ok) {
         const fetchedData = await response.json();
         setPostsList(fetchedData);
-        console.log(fetchedData);
+        // console.log(fetchedData);
         setApiStatus(apiStateConstants.success);
       } else {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -100,7 +85,6 @@ function Home() {
   //       setPostsList(fetchedData);
   //       setApiStatus(apiStateConstants.success);
 
-        
   //     } else {
   //       throw new Error(`HTTP error! Status: ${response.status}`);
   //     }
@@ -113,19 +97,27 @@ function Home() {
   const handleLike = (id) => {
     const updatedList = likedList.includes(id)
       ? likedList.filter((each) => each.id !== id)
-      : [...likedList, id]; 
-  
+      : [...likedList, id];
+
     setLikedList(updatedList);
   };
-  
 
   const getHomeLoaderView = () => (
     <div className="Home-loader-container">
-      <Puff color="#00BFFF" height={100} width={100} />
+      <Puff color="white" height={50} width={50} />
     </div>
   );
 
-  const getHomeFailureView = () => <p>FAILURE</p>;
+  const getHomeFailureView = () => (
+    <div className="failure-view-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/api-failure-view.png"
+        alt="failure view"
+        className="failure-view-image"
+      />
+      <h1 className="error-message-failure">Something Went Wrong</h1>
+    </div>
+  )
 
   const getHomeSuccessView = () => (
     <ul className="home-cont">

@@ -4,13 +4,32 @@
   flex-direction: column;
   justify-content: center;
   height: 100vh;
+  background-image: url("https://res.cloudinary.com/dyal335uz/image/upload/v1664285434/samples/landscapes/beach-boat.jpg");
+ background-size: cover;
 }
 .login-container{
   display: flex;
   justify-content: center;
   align-items: center;
-  
   font-family: "Roboto";
+  margin-top: 30px;
+}
+.login-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow:  0 0 10px 5px rgba(255, 0, 0, 0.5);
+  border-radius: 10px;
+  height: 300px;
+  width: 300px;
+  justify-content: center;
+  padding: 20px;
+}
+@media screen and (max-width: 768px) {
+  .login-wrapper{
+    height: auto;
+    width: auto;
+  }
 }
 .main-button{
   padding: 10px 15px;
@@ -18,7 +37,7 @@
   border: 2px solid blue;
   border-radius: 8px;
   margin-right: 30px;
-  color: blue;
+  color: black;
   font-size: 20px;
   background-color: transparent;
 }
@@ -30,19 +49,20 @@
   }
 }
 .popup-container{
-  height: 400px;
-  width: 350px;
+  height: auto;
+  width: auto;
   border-radius: 10px;
-  border: 1px solid blue;
-  padding: 20px;
+  border: none;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   background-color: rgb(59, 58, 58);
   color: white;
+  box-shadow:  0 0 10px 5px rgba(255, 0, 0, 0.5);
 }
 @media screen and (max-width: 768px) {
   .popup-container{
-    height: 350px;
+    height: auto;
     width: 250px;
   }
 }
@@ -105,10 +125,28 @@
   
 }
 .error-msg{
-  color: red;
+  color: white;
   font-size: 15px;
 }
 .reg-msg{
   color: black;
   align-self: center;
+  font-weight: bold;
+  margin-top: 40px;
+}
+.pop-heading{
+  align-self: center;
+
+}
+.logo-login{
+  color: black;
+  font-size: 25px;
+  margin-right: 7px;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px){
+  .logo-login{
+    font-size: 18px;
+  }
 }

@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  
+  padding: 30px;
 }
 .handle-post-cont{
   display: flex;
   align-items: center;
+  width: auto;
+  margin-top: 30px;
 }
 @media screen and (max-width: 768px){
   .handle-post-cont{
-    max-width: 250px;
     width: auto;
   }
 }
@@ -19,7 +20,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0;
-  margin-right: 15px;
+  margin-right: 10px;
+  
 }
 
 .like-btn-my{
@@ -51,11 +53,11 @@
   flex-direction: column;
 }
 .mypost-container{
-    border: 2px solid rgb(229, 196, 246);
+    border: 2px solid rgb(49, 49, 189);
     border-radius: 10px;
     padding: 10px 20px;
     height: auto;
-    width: 70%;
+    max-width: 50%;
     
 }
 .no-posts{

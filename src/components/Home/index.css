@@ -1,35 +1,39 @@
-.bg-home-container{
+.bg-home-container {
   display: flex;
   flex-direction: column;
-  
+  background-image: url("https://res.cloudinary.com/dyal335uz/image/upload/v1693558302/own-filters-Q-nszhJr-vI-unsplash_pmwj29.jpg");
+  background-size: cover;
+  height: 100vh;
 }
-.Home-loader-container{
+.Home-loader-container {
   align-self: center;
-  margin-top: 100px;
+  margin-top: 200px;
 }
-.home-cont{
+.home-cont {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   padding: 20px 50px;
-  padding-top: 80px;
+  margin-top: 80px;
 }
-@media screen and (max-width: 768px){
-  .home-cont{
+@media screen and (max-width: 768px) {
+  .home-cont {
     padding: 10px 20px;
     padding-left: 10px;
     padding-top: 50px;
   }
 }
-.each-post-li{
+.each-post-li {
   text-decoration: none;
   list-style-type: none;
 }
-.profile-cotainer{
+.profile-cotainer {
   display: flex;
   align-items: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-.profile{
+.profile {
   padding: 10px;
   border-radius: 50%;
   color: blue;
@@ -40,82 +44,103 @@
   width: 35px;
   height: 30px;
   font-size: 18px;
-padding-top: 15px;
+  padding-top: 15px;
+}
+@media screen and (max-width: 768px) {
+  .profile {
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
+    padding-top: 13px;
   }
-  @media screen and (max-width: 768px){
-    .profile{
-      width: 25px;
-      height:25px;
-      font-size: 15px;
-      padding-top: 13px;
-    }
-    
-  }
-  .profile-name{
-    font-size: 24px;
+}
+.profile-name {
+  font-size: 24px;
+  font-weight: bold;
+}
+@media screen and (max-width: 768px) {
+  .profile-name {
+    font-size: 18px;
     font-weight: bold;
   }
-  @media screen and (max-width: 768px){
-    .profile-name{
-      font-size: 18px;
-      font-weight: bold;
-    }
-  }
-  .post-container{
-    border: 2px solid rgb(229, 196, 246);
-    border-radius: 10px;
-    padding: 20px;
+}
+.post-container {
+  border: 2px solid rgb(49, 49, 189);
+  border-radius: 10px;
+  padding: 20px;
+  height: auto;
+  width: 70%;
+  margin-left: 80px;
+}
+@media screen and (max-width: 768px) {
+  .post-container {
+    margin-left: 20px;
     height: auto;
-    width: 70%;
-    margin-left: 80px;
+    padding: 10px;
+    width: auto;
   }
-  @media screen and (max-width: 768px){
-    .post-container{
-      margin-left: 20px;
-      height: auto;
-      padding: 10px;
-    }
+}
+.post-text {
+  color: black;
+  font-weight: 500;
+  font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+  .post-text {
+    font-size: 18px;
   }
-  .post-text{
+}
+.like-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid rgb(49, 49, 189);
+  border-radius: 10px;
+  padding: 5px;
+  width: 100px;
+  margin-left: 80px;
+  border-top: 0;
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 768px) {
+  .like-container {
+    margin-left: 20px;
+    height: auto;
+    width: 100px;
+  }
+}
+.like-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.likes {
+  color: black;
+  font-size: 16px;
+}
+@media screen and (max-width: 768px) {
+  .likes {
     color: black;
-    font-weight: 500;
-    font-size: 20px;
+    font-size: 12px;
   }
-  @media screen and (max-width: 768px){
-    .post-text{
-      font-size: 16px;
-    }
-  }
-  .like-container{
-    display: flex;
-    align-items: center;
-    border: 2px solid rgb(229, 196, 246);
-    border-radius: 10px;
-    padding: 5px;
-    width: 140px;
-    margin-left: 80px;
-    border-top: 0;
-    margin-bottom: 20px;
-  }
-  @media screen and (max-width: 768px){
-    .like-container{
-      margin-left: 20px;
-      height: auto;
-      width: 100px;
-    }
-  }
-  .like-btn{
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-  .likes{
-    color: black;
-    font-size: 16px;
-  }
-  @media screen and (max-width: 768px){
-    .likes{
-      color: black;
-      font-size: 12px;
-    }
-  }
+}
+.search-cont {
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid rgb(71, 70, 70);
+  margin-top: 80px;
+  border-radius: 8px;
+}
+.search-input {
+  border: none;
+  padding: 10px;
+  width: 400px;
+}
+.search-btn {
+  color: black;
+  border: none;
+  border-left: 1px solid rgb(71, 70, 70);
+  font-size: 15px;
+  background-color: transparent;
+}

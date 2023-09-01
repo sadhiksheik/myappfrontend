@@ -1,5 +1,6 @@
 import React from 'react';
 import { RxCross2 } from 'react-icons/rx';
+import {FaShare} from "react-icons/fa"
 import {Redirect,useHistory} from 'react-router-dom'
 import Popup from 'reactjs-popup';
 import Cookies from 'js-cookie';
@@ -12,10 +13,9 @@ function Login() {
   const [loginName, setLoginName] = React.useState('');
   const [loginPassword, setLoginPassword] = React.useState('');
   const [showSubmitError,setShowSubmitError] = React.useState(false)
-  const [errorMsg,setErrorMsg] = React.useState("")
   const [registerMsg,setRegisterMsg] = React.useState("")
   const history = useHistory();
-
+const errorMsg = "Invalid User"
   const onClickingRegister = async (event) => {
     event.preventDefault();
     if (registerName && registerPassword) {
@@ -27,10 +27,11 @@ function Login() {
         body: JSON.stringify(userDetails),
       };
       const response = await fetch(url, options);
+      console.log(response);
       if (response.ok === true){
         setRegisterMsg("Registration Successful you can login now");
       }
-      console.log(response);
+      
     } else {
       alert('Both the fields should be filled');
     }
@@ -40,7 +41,7 @@ function Login() {
     event.preventDefault();
     if (loginName && loginPassword) {
       const userDetails = { name: loginName, password: loginPassword };
-      console.log(userDetails);
+      // console.log(userDetails);
       const url = 'https://content-sharing-backed.onrender.com/login';
       const options = {
         method: 'POST',
@@ -51,7 +52,7 @@ function Login() {
       const data = await response.json();
       console.log(response)
       if (response.ok) {
-        console.log(data);
+        // console.log(data);
         const jwtToken = data.jwtToken;
         Cookies.set('jwt_token', jwtToken, {
           expires: 30,
@@ -59,7 +60,7 @@ function Login() {
         history.replace('/');
       } else {
         setShowSubmitError(true);
-        setErrorMsg(data.error_msg);
+        console.log(data)
       }
     } else {
       alert('Both the fields should be filled');
@@ -73,10 +74,16 @@ function Login() {
 
   return (
     <div className='bg-login-cont'>
+      <div className='login-wrapper'>
+      <div className="logo-cont">
+        <h1 className="logo-login">CONTENT</h1>
+        <FaShare className="share-logo" color="blue" size={25} />
+      </div>
     <div className="login-container">
       <Popup modal trigger={<button className="main-button">Register</button>}>
         {(close) => (
           <div className="popup-container">
+            <h1 className='pop-heading'>Registration</h1>
             <div className="close-para-container">
               <p className="description">Get registered by providing your details</p>
               <button type="button" className="close-icon" onClick={() => close()}>
@@ -114,6 +121,7 @@ function Login() {
       <Popup modal trigger={<button className="main-button">Login</button>}>
         {(close) => (
           <div className="popup-container">
+            <h1 className='pop-heading'>Login</h1>
             <div className="close-para-container">
               <p className="description">Login by providing your details</p>
               <button type="button" className="close-icon" onClick={() => close()}>
@@ -131,7 +139,7 @@ function Login() {
                 type="text"
               />
               <label className="register-label" htmlFor="password">
-                Set Password
+                Your Password
               </label>
               <input
                 placeholder="password"
@@ -139,16 +147,19 @@ function Login() {
                 onChange={(event) => setLoginPassword(event.target.value)}
                 type="password"
               />
+              {showSubmitError && <p className='error-msg'>*{errorMsg}</p>}
               <button type="submit" className="submit-btn">
                 Login
               </button>
-              {showSubmitError && <p className='error-msg'>*{errorMsg}</p>}
+              
             </form>
           </div>
         )}
       </Popup>
     </div>
     {registerMsg!=="" && <p className='reg-msg'>{registerMsg}</p>}
+    </div>
+    
     </div>
   );
 }

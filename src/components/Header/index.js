@@ -16,7 +16,6 @@ const Header =()=>{
   }
 
   const onLoggingOut = () =>{
-   
     Cookies.remove('jwt_token')
     history.replace('/login')
   }
